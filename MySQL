@@ -1,0 +1,79 @@
+📘 MySQL Basics
+🔹 Login to MySQL
+bash
+Copy
+Edit
+mysql -u root -p
+📁 Database Commands
+sql
+Copy
+Edit
+SHOW DATABASES;                -- List all databases
+CREATE DATABASE dbname;        -- Create a new database
+USE dbname;                    -- Switch to a database
+DROP DATABASE dbname;          -- Delete a database
+📦 Table Commands
+sql
+Copy
+Edit
+SHOW TABLES;                           -- List tables in current database
+CREATE TABLE tablename (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT
+);                                     -- Create a table
+
+DESCRIBE tablename;                    -- Show table structure
+DROP TABLE tablename;                  -- Delete a table
+✏️ Data Manipulation
+sql
+Copy
+Edit
+INSERT INTO tablename (name, age)
+VALUES ('Alice', 25);                  -- Insert data
+
+SELECT * FROM tablename;               -- Fetch all rows
+SELECT name FROM tablename;            -- Fetch specific column
+
+UPDATE tablename
+SET age = 30
+WHERE name = 'Alice';                  -- Update data
+
+DELETE FROM tablename
+WHERE name = 'Alice';                  -- Delete row
+🔍 Query Filtering
+sql
+Copy
+Edit
+SELECT * FROM tablename WHERE age > 20;
+SELECT * FROM tablename WHERE name LIKE 'A%';
+SELECT * FROM tablename ORDER BY age DESC;
+SELECT * FROM tablename LIMIT 5;
+🧩 Joins
+sql
+Copy
+Edit
+-- Inner Join
+SELECT a.id, b.salary
+FROM employees a
+JOIN salaries b ON a.id = b.emp_id;
+
+-- Left Join
+SELECT a.id, b.salary
+FROM employees a
+LEFT JOIN salaries b ON a.id = b.emp_id;
+📊 Aggregations
+sql
+Copy
+Edit
+SELECT COUNT(*) FROM tablename;
+SELECT AVG(age) FROM tablename;
+SELECT MAX(age), MIN(age) FROM tablename;
+GROUP BY name;
+🔐 User and Privileges
+sql
+Copy
+Edit
+CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON dbname.* TO 'username'@'localhost';
+FLUSH PRIVILEGES;
